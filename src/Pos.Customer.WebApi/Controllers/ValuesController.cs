@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
+using static Pos.Customer.Common.CommonCustomers;
 
 namespace Pos.Customer.WebApi.Controllers
 {
@@ -11,9 +12,10 @@ namespace Pos.Customer.WebApi.Controllers
     public class ValuesController : ControllerBase
     {
         // GET api/values
-        [HttpGet]
+        [HttpGet("GetValues")]
         public ActionResult<IEnumerable<string>> Get()
         {
+            var connection = GetVarEverionmentByKey("CUSTOMER_READ_CONNECTION");
             return new string[] { "value1", "value2" };
         }
 

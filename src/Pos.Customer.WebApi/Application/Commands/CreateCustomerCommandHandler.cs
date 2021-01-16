@@ -34,7 +34,7 @@ namespace Pos.Customer.WebApi.Application.Commands
 
             // Insert event to Command Db
             await _eventSources.InserEvent(customerCreatedEvent, cancellationToken);
-            
+
             await _kafkaProducer.Send(customerCreatedEvent, "PosServices");
         }
     }

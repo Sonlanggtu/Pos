@@ -44,11 +44,10 @@ namespace Pos.Product.WebApi
                        .RegisterMongoContext<POSProductEventContext, POSProductEventContextSetting>
                             (Configuration.GetSection("ConnectionStrings:PRODUCT_COMMAND_CONNECTION")
                            .Get<POSProductEventContextSetting>())
-                  // Implement CQRS Event Sourcing => UserContext [Query] &                    
+                  // Implement CQRS Event Sourcing => UserContext [Query] &
                   .RegisterEf()
                     .AddDbContext<POSProductContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("PRODUCT_READ_CONNECTION")))
-                .AddOpenApiDocument();                       
+                        options.UseSqlServer(Configuration.GetConnectionString("PRODUCT_READ_CONNECTION")));
 
             return services;
         }
@@ -60,8 +59,8 @@ namespace Pos.Product.WebApi
                 cfg.AddProfile(new CommandToEventMapperProfile());
                 cfg.AddProfile(new DomainToCommandMapperProfile());
                 cfg.AddProfile(new EventToDomainMapperProfile());
-                
-            });            
+
+            });
             services.AddSingleton(provider => mapperConfig.CreateMapper());
 
             return services;
@@ -72,7 +71,7 @@ namespace Pos.Product.WebApi
             #region Command
             services.AddScoped<IProductRepository, ProductRepository>();
             services.AddScoped<IProductCategoryRepository, ProductCategoryRepository>();
-            #endregion            
+            #endregion
             #region Queries
             services.AddScoped<IProductQueries, ProductQueries>();
             services.AddScoped<IProductCategoryQueries, ProductCategoryQueries>();

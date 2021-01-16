@@ -25,7 +25,7 @@ namespace Pos.Customer.WebApi.Controllers
         private readonly ICustomerQueries _customerQueries;
         private readonly ILogger<CustomerController> _logger;
 
-        public CustomerController(IMapper mapper, 
+        public CustomerController(IMapper mapper,
             ICommandHandler<CreateCustomerCommand> createCustomerCommand,
             ICommandHandler<UpdateCustomerCommand> updateCustomerCommand,
             ICommandHandler<DeleteCustomerCommand> deleteCustomerCommand,
@@ -41,7 +41,7 @@ namespace Pos.Customer.WebApi.Controllers
         }
 
         // GET api/customer
-        [HttpGet]
+        [HttpGet("GetAllCustomerAsync")]
         public async Task<IActionResult> Get()
         {
             try
@@ -76,11 +76,12 @@ namespace Pos.Customer.WebApi.Controllers
 
         // POST api/customer
         [HttpPost]
+        [Route("CreateCustomerAsync")]
         public async Task<IActionResult> Post([FromBody] CreateCustomerCommand request)
         {
             try
-            {                
-                await _createCustomerCommand.Handle(request, CancellationToken.None);                
+            {
+                await _createCustomerCommand.Handle(request, CancellationToken.None);
                 return Ok(new ApiResponse(200));
             }
             catch (Exception ex)

@@ -2,9 +2,15 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
+    <FileVersion>15.1.2021.0734</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="2.2.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\Pos.Product.Comon\Pos.Product.Common.csproj" />
     <ProjectReference Include="..\Pos.Product.Domain\Pos.Product.Domain.csproj" />
   </ItemGroup>
 

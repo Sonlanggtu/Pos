@@ -20,9 +20,9 @@ namespace Pos.WebApplication.Utilities
                     if (!response.IsSuccessStatusCode)
                         throw new Exception("Url not responding with 200 OK");
                 }
-                catch (Exception)
+                catch (Exception ex)
                 {
-                    return await Task.FromResult(HealthCheckResult.Unhealthy("Fail"));
+                    return await Task.FromResult(HealthCheckResult.Unhealthy($"Fail : {ex.Message}"));
                 }
             }
             return await Task.FromResult(HealthCheckResult.Healthy("Connected"));

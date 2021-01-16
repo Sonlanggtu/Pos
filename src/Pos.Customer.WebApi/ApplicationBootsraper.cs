@@ -42,11 +42,11 @@ namespace Pos.Customer.WebApi
                        .RegisterMongoContext<POSCustomerEventContext, POSCustomerEventContextSetting>
                             (Configuration.GetSection("ConnectionStrings:CUSTOMER_COMMAND_CONNECTION")
                            .Get<POSCustomerEventContextSetting>())
-                  // Implement CQRS Event Sourcing => UserContext [Query] &                    
+                  // Implement CQRS Event Sourcing => UserContext [Query] &
                   .RegisterEf()
                     .AddDbContext<POSCustomerContext>(options =>
-                        options.UseSqlServer(Configuration.GetConnectionString("CUSTOMER_READ_CONNECTION")))
-                .AddOpenApiDocument();                       
+                        options.UseSqlServer(Configuration.GetConnectionString("CUSTOMER_READ_CONNECTION")));
+               //.AddOpenApiDocument();
 
             return services;
         }
@@ -57,8 +57,8 @@ namespace Pos.Customer.WebApi
             {
                 cfg.AddProfile(new CommandToEventMapperProfile());
                 cfg.AddProfile(new DomainToCommandMapperProfile());
-                cfg.AddProfile(new EventoDomainMapperProfile());                
-            });            
+                cfg.AddProfile(new EventoDomainMapperProfile());
+            });
             services.AddSingleton(provider => mapperConfig.CreateMapper());
 
             return services;

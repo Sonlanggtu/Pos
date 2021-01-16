@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Pos.Customer.Domain.CustomerAggregate;
-
+using static Pos.Customer.Common.CommonCustomers;
 namespace Pos.Customer.Infrastructure
 {
     public partial class POSCustomerContext : DbContext
@@ -21,6 +21,8 @@ namespace Pos.Customer.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
+                var mpConnection = GetVarEverionmentByKey("CUSTOMER_READ_CONNECTION");
+                optionsBuilder.UseSqlServer(mpConnection);
             }
         }
 

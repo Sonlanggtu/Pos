@@ -12,6 +12,7 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Microsoft.OpenApi.Models;
 using Ocelot.DependencyInjection;
 using Ocelot.Middleware;
 
@@ -38,6 +39,23 @@ namespace Pos.Gateway
             services.AddOcelot(Configuration);
 
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+
+            // Add Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "API Pos.Gateway",
+                    Version = "1.0",
+                    Description = "API Pos.Gateway",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "DamNgocSon",
+                        Email = "damngocsonIT@gmail.com",
+                        Url = new Uri("https://sonlanggtu.github.io/"),
+                    }
+                });
+            });
 
             var key = Encoding.ASCII.GetBytes("E546C8DF278CD5931069B522E695D4F2");
 
@@ -67,6 +85,17 @@ namespace Pos.Gateway
             {
                 app.UseDeveloperExceptionPage();
             }
+
+            // Enable middleware to serve generated Swagger as a JSON endpoint.
+            app.UseSwagger();
+
+            // Enable middleware to serve swagger-ui (HTML, JS, CSS, etc.),
+            // specifying the Swagger JSON endpoint.
+            app.UseSwaggerUI(c =>
+            {
+                c.SwaggerEndpoint("/swagger/v1/swagger.json", "API Pos.Gateway");
+            });
+
             app.UseAuthentication();
             app.UseOcelot().Wait();
             app.UseMvc();

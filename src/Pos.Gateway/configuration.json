@@ -1,84 +1,104 @@
 {
   "ReRoutes": [
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/{controller}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pos.report.webapi",
-          "Port": 80
+          //"Host": "pos.report.webapi",
+          "Host": "localhost",
+          "Port": 61952
         }
       ],
-      "UpstreamPathTemplate": "/api-report/{everything}",
+      "UpstreamPathTemplate": "/api-report/{controller}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "AuthenticationOptions": {
-        //"AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
+      //"AuthenticationOptions": {
+      //  //"AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
+      "RateLimitOptions": {
+        "ClientWhitelist": [],
+        "EnableRateLimiting": true,
+        "Period": "1s",
+        "PeriodTimespan": 1,
+        "Limit": 2
       }
     },
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/{controller}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pos.product.webapi",
-          "Port": 80
+          //"Host": "pos.product.webapi",
+          //"Port": 80,
+          "Host": "localhost",
+          "Port": 61913
         }
       ],
-      "UpstreamPathTemplate": "/api-product/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "AuthenticationOptions": {
-        //"AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamPathTemplate": "/api-product/{controller}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+      //,
+      //"AuthenticationOptions": {
+      //  //"AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/{controller}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pos.order.webapi",
-          "Port": 80
+          //"Host": "pos.order.webapi",
+          //"Port": 80
+          "Host": "localhost",
+          "Port": 61830
         }
       ],
-      "UpstreamPathTemplate": "/api-order/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "AuthenticationOptions": {
-        //"AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamPathTemplate": "/api-order/{controller}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+      //,
+      //"AuthenticationOptions": {
+      //  //"AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/{controller}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pos.customer.webapi",
-          "Port": 80
+          //"Host": "pos.customer.webapi",
+          //"Port": 80
+          "Host": "localhost",
+          "Port": 61924
         }
       ],
-      "UpstreamPathTemplate": "/api-customer/{everything}",
-      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ],
-      "AuthenticationOptions": {
-        //"AuthenticationProviderKey": "Bearer",
-        "AllowedScopes": []
-      }
+      "UpstreamPathTemplate": "/api-customer/{controller}/{everything}",
+      "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
+      //,
+      //"AuthenticationOptions": {
+      //  //"AuthenticationProviderKey": "Bearer",
+      //  "AllowedScopes": []
+      //}
     },
     {
-      "DownstreamPathTemplate": "/api/{everything}",
+      "DownstreamPathTemplate": "/api/{controller}/{everything}",
       "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
-          "Host": "pos.gateway.securities",
+          //"Host": "pos.gateway.securities",
+          //"Port": 80
+          "Host": "localhost",
           "Port": 80
         }
       ],
-      "UpstreamPathTemplate": "/api-authentication/{everything}",
+      "UpstreamPathTemplate": "/api-authentication/{controller}/{everything}",
       "UpstreamHttpMethod": [ "Get", "Post", "Put", "Delete" ]
     }
   ],
   "GlobalConfiguration": {
-    "RequestIdKey": "OcRequestId",
-    "AdministrationPath": "/administration"
+    //"RequestIdKey": "OcRequestId",
+    //"AdministrationPath": "/administration"
+    "BaseUrl": "https://localhost:44335/"
   }
 }

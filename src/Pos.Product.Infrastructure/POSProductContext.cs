@@ -2,7 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Pos.Product.Domain.ProductAggregate;
-
+using static Pos.Product.Common.CommonProduct;
 namespace Pos.Product.Infrastructure
 {
     public partial class POSProductContext : DbContext
@@ -24,6 +24,8 @@ namespace Pos.Product.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
+                var mpConnection = GetVarEverionmentByKey("PRODUCT_READ_CONNECTION");
+                optionsBuilder.UseSqlServer(mpConnection);
             }
         }
 
