@@ -38,4 +38,5 @@ namespace Pos.Customer.WebApi.Application.Commands
             await _kafkaProducer.Send(customerCreatedEvent, "PosServices");
         }
     }
+
 }

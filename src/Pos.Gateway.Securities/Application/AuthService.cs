@@ -12,16 +12,18 @@ namespace Pos.Gateway.Securities.Application
 {
     public class AuthService : IAuthService
     {
-        public Models.SecurityToken Authenticate(string keyAuth)
+        public Models.SecurityToken Authenticate(string username, string password)
         {
-            if (string.IsNullOrEmpty(keyAuth))
+            if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
+
+
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();
             var key = Encoding.ASCII.GetBytes("E546C8DF278CD5931069B522E695D4F2");
             var tokenDescriptor = new SecurityTokenDescriptor
-            {                
+            {
                 Expires = DateTime.UtcNow.AddDays(7),
                 SigningCredentials = new SigningCredentials(new SymmetricSecurityKey(key), SecurityAlgorithms.HmacSha256Signature)
             };

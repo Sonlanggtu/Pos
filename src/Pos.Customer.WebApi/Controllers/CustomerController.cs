@@ -47,7 +47,8 @@ namespace Pos.Customer.WebApi.Controllers
             try
             {
                 var data = await _customerQueries.GetCustomers();
-
+                //var client = new CustomerService.CustomerService("");
+                //var customer = CustomerService.GetCustom
                 return Ok(new ApiOkResponse(data, data.Count()));
             }
             catch (Exception ex)

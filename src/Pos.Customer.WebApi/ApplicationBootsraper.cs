@@ -4,6 +4,7 @@ using Dermayon.Infrastructure.EvenMessaging.Kafka;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.OpenApi.Models;
 using Pos.Customer.Domain.CustomerAggregate;
 using Pos.Customer.Domain.Events;
 using Pos.Customer.Infrastructure;
@@ -46,7 +47,7 @@ namespace Pos.Customer.WebApi
                   .RegisterEf()
                     .AddDbContext<POSCustomerContext>(options =>
                         options.UseSqlServer(Configuration.GetConnectionString("CUSTOMER_READ_CONNECTION")));
-               //.AddOpenApiDocument();
+            //.AddOpenApiDocument();
 
             return services;
         }
@@ -71,6 +72,23 @@ namespace Pos.Customer.WebApi
             #endregion
             #region Queries
             services.AddScoped<ICustomerQueries, CustomerQueries>();
+
+            // Add Swagger
+            services.AddSwaggerGen(c =>
+            {
+                c.SwaggerDoc("v1", new OpenApiInfo
+                {
+                    Title = "API Customer",
+                    Version = "1.0",
+                    Description = "This API Customer",
+                    Contact = new OpenApiContact
+                    {
+                        Name = "DamNgocSon",
+                        Email = "damngocsonIT@gmail.com",
+                        Url = new Uri("https://sonlanggtu.github.io/"),
+                    }
+                });
+            });
             #endregion
             return services;
         }

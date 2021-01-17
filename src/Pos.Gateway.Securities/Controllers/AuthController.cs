@@ -23,7 +23,7 @@ namespace Pos.Gateway.Securities.Controllers
         [HttpPost("authenticate")]
         public IActionResult Authenticate([FromBody] Authentication authentication)
         {
-            var token = _authService.Authenticate(authentication.Key);
+            var token = _authService.Authenticate(authentication.Username, authentication.Password);
 
             if (token == null)
                 return BadRequest(new { message = "Username or password is incorrect" });

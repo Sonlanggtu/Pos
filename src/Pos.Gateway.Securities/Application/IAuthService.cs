@@ -8,6 +8,6 @@ namespace Pos.Gateway.Securities.Application
 {
     public interface IAuthService
     {
-        SecurityToken Authenticate(string key);
+        SecurityToken Authenticate(string username, string password);
     }
 }
