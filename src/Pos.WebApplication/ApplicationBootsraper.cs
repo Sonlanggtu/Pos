@@ -20,11 +20,10 @@ namespace Pos.WebApplication
         public static IServiceCollection SetHealtCheck(this IServiceCollection services, IConfiguration configuration)
         {
             services.AddHealthChecks()
-               .AddCheck<OrderServicesHc>("Order HTTP Check")
-               .AddCheck<ProductServicesHc>("Product HTTP Check")
-               .AddCheck<CustomerServicesHc>("Customer HTTP Check")
-               .AddCheck<ReportServicesHc>("Report HTTP Check")
-            ;
+               .AddCheck<OrderServicesHc>("Order HTTP Check");
+               //.AddCheck<ProductServicesHc>("Product HTTP Check")
+               //.AddCheck<CustomerServicesHc>("Customer HTTP Check")
+               //.AddCheck<ReportServicesHc>("Report HTTP Check");
 
             return services;
         }

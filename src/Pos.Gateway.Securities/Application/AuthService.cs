@@ -12,12 +12,13 @@ namespace Pos.Gateway.Securities.Application
 {
     public class AuthService : IAuthService
     {
+        POS_GatewaySecuritiesContext dbcontext = new POS_GatewaySecuritiesContext();
         public Models.SecurityToken Authenticate(string username, string password)
         {
             if (string.IsNullOrEmpty(username) || string.IsNullOrEmpty(password))
                 return null;
 
-
+            
 
             // authentication successful so generate jwt token
             var tokenHandler = new JwtSecurityTokenHandler();

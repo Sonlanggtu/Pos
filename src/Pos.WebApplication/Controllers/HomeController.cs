@@ -10,9 +10,16 @@ namespace Pos.WebApplication.Controllers
 {
     public class HomeController : Controller
     {
+        [HttpGet]
         public IActionResult Index()
         {
             return View();
+        }
+
+        [HttpPost]
+        public IActionResult Index(Account account)
+        {
+            return View(account);
         }
 
         public IActionResult Privacy()

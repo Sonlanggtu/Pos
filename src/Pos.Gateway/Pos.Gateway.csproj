@@ -5,7 +5,7 @@
     <AspNetCoreHostingModel>InProcess</AspNetCoreHostingModel>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
     <DockerComposeProjectPath>..\docker-compose.dcproj</DockerComposeProjectPath>
-    <FileVersion>16.1.2021.1044</FileVersion>
+    <FileVersion>19.1.2021.0704</FileVersion>
   </PropertyGroup>
 
   <ItemGroup>

@@ -1,0 +1,16 @@
+{
+  "version": "1.0.0-*",
+
+  "dependencies": {
+    "Microsoft.EntityFrameworkCore.Sqlite": "1.1.1",
+    "Microsoft.EntityFrameworkCore.Sqlite.Design": "1.1.1",
+    "NETStandard.Library": "1.6.1"
+  },
+  "tools": {
+    "Microsoft.EntityFrameworkCore.Tools.DotNet":"1.0.0"
+  },
+  "frameworks": {
+    "netstandard1.6": {
+      "imports": "dnxcore50"
+    }
+  }

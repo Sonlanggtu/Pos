@@ -21,8 +21,8 @@ namespace Pos.Customer.Infrastructure
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var mpConnection = GetVarEverionmentByKey("CUSTOMER_READ_CONNECTION");
-                optionsBuilder.UseSqlServer(mpConnection);
+                var POSConnection = GetVarEverionmentByKey("CUSTOMER_READ_CONNECTION");
+                optionsBuilder.UseSqlServer(POSConnection);
             }
         }
 
