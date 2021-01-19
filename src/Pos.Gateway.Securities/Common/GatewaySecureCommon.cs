@@ -9,6 +9,22 @@ namespace Pos.Gateway.Securities.Common
 {
     public static class GatewaySecureCommon
     {
+
+        public const string Success = "ok";
+        public const string Warning = "warning";
+        public const string NotFound = "not-found";
+        public const string ErrorSystem = "error-system";
+
+        public class UserClaim
+        {
+            public const string Roles = "Roles";
+            public const string Id = "Id";
+            public const string Permissions = "permissions";
+            public const string FullName = "fullName";
+        }
+
+
+        #region Funtion Common
         public static string GetVarEverionmentByKey(string key)
         {
             var everionmentDocker = Environment.GetEnvironmentVariable(key);
@@ -32,5 +48,7 @@ namespace Pos.Gateway.Securities.Common
                 return result;
             }
         }
+        #endregion
+
     }
 }

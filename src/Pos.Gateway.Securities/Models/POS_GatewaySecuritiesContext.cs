@@ -1,12 +1,10 @@
 ﻿using System;
-using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
-using Pos.Gateway.Securities.Common;
 
 namespace Pos.Gateway.Securities.Models
 {
-    public partial class POS_GatewaySecuritiesContext : IdentityDbContext
+    public partial class POS_GatewaySecuritiesContext : DbContext
     {
         public POS_GatewaySecuritiesContext()
         {
@@ -17,7 +15,6 @@ namespace Pos.Gateway.Securities.Models
         {
         }
 
-        public virtual DbSet<Abouts> Abouts { get; set; }
         public virtual DbSet<AspNetRoleClaims> AspNetRoleClaims { get; set; }
         public virtual DbSet<AspNetRoles> AspNetRoles { get; set; }
         public virtual DbSet<AspNetUserClaims> AspNetUserClaims { get; set; }
@@ -31,8 +28,8 @@ namespace Pos.Gateway.Securities.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var connection = GatewaySecureCommon.GetVarEverionmentByKey("CUSTOMER_READ_CONNECTION");
-                optionsBuilder.UseSqlServer(connection);
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. See http://go.microsoft.com/fwlink/?LinkId=723263 for guidance on storing connection strings.
+                optionsBuilder.UseSqlServer("Server=localhost;initial catalog=POS_GatewaySecurities;user id=damngocson;password=123");
             }
         }
 

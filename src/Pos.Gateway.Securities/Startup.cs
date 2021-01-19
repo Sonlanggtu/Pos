@@ -5,13 +5,16 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Pos.Gateway.Securities.Application;
+using Pos.Gateway.Securities.Models;
 
 namespace Pos.Gateway.Securities
 {
@@ -28,6 +31,39 @@ namespace Pos.Gateway.Securities
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddScoped<IAuthService, AuthService>();
+            //services.AddTransient<IUserStore<AspnetUse>, UserStore>();
+            //services.AddTransient<IRoleStore<AppRole>, RoleStore>();
+
+
+            //services.AddIdentity<AspNetUsers, AspNetRoles>()
+            //   .AddDefaultTokenProviders();
+
+            //services.Configure<IdentityOptions>(opt =>
+            //{
+            //    // Default Password settings.
+            //    opt.Password.RequireDigit = true;
+            //    opt.Password.RequireLowercase = false;
+            //    opt.Password.RequireNonAlphanumeric = false;
+            //    opt.Password.RequireUppercase = false;
+            //    opt.Password.RequiredLength = 6;
+            //    opt.Password.RequiredUniqueChars = 1;
+            //});
+            //services.AddTransient<UserManager<AspNetUsers>, AspNetUserManager>();
+            //services.AddTransient<SignInManager<ApplicationUser>, AspNetUserSignInManager>();
+            //services.AddTransient<RoleManager<ApplicationRole>, ApplicationRoleManager>();
+            //services.AddTransient<IUserStore<AspNetUsers>, ApplicationUserStore>();
+            // services.AddTransient<IRoleStore<AspNetRoles>, ApplicationRoleStore>();
+
+
+            services.AddTransient<UserManager<AspNetUsers>>();
+
+            services.AddDbContext<POS_GatewaySecuritiesContext>(options =>
+                options.UseSqlServer(
+                    Configuration.GetConnectionString("CUSTOMER_READ_CONNECTION")));
+
+            services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
+                .AddEntityFrameworkStores<POS_GatewaySecuritiesContext>();
+
 
             // Add Swagger
             services.AddSwaggerGen(c =>
@@ -77,6 +113,8 @@ namespace Pos.Gateway.Securities
             {
                 endpoints.MapControllers();
             });
+
+
         }
     }
 }

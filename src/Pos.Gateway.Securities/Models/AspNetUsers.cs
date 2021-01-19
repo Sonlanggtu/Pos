@@ -35,6 +35,8 @@ namespace Pos.Gateway.Securities.Models
         public DateTimeOffset? LockoutEnd { get; set; }
         public bool LockoutEnabled { get; set; }
         public int AccessFailedCount { get; set; }
+        [StringLength(100)]
+        public string FullName { get; set; }
 
         [InverseProperty("User")]
         public virtual ICollection<AspNetUserClaims> AspNetUserClaims { get; set; }

@@ -1,4 +1,5 @@
 ﻿using Pos.Gateway.Securities.Models;
+using Pos.Gateway.Securities.ViewModels;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -8,6 +9,8 @@ namespace Pos.Gateway.Securities.Application
 {
     public interface IAuthService
     {
-        SecurityToken Authenticate(string username, string password);
+        Task<object> GenerateTokenJWT(AspNetUsers user);
+
+        Task<object> CreateAsync(AspNetUserVm user);
     }
 }
