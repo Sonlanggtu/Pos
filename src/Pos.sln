@@ -14,6 +14,10 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "order", "order", "{CDB55524-F464-4AF1-A5F6-B4CFC26C1415}"
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pos.Order.Domain", "Pos.Order.Domain\Pos.Order.Domain.csproj", "{F20B1D17-FFD7-4185-9F57-8A75F4653F7D}"
+	ProjectSection(ProjectDependencies) = postProject
+		{AFD53301-4887-40F0-BEBB-2C06D4815B1E} = {AFD53301-4887-40F0-BEBB-2C06D4815B1E}
+		{DDD1EA42-2F27-4D46-B9F5-5A858F99F76A} = {DDD1EA42-2F27-4D46-B9F5-5A858F99F76A}
+	EndProjectSection
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pos.Order.Infrastructure", "Pos.Order.Infrastructure\Pos.Order.Infrastructure.csproj", "{A03EFC55-7A32-43F3-8CB7-475FA75BAC12}"
 EndProject
@@ -51,7 +55,7 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pos.Order.WebApi", "Pos.Ord
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pos.Report.WebApi", "Pos.Report.WebApi\Pos.Report.WebApi.csproj", "{05A7AE19-283C-49AC-B745-923A62F092E4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Pos.WebApplication", "Pos.WebApplication\Pos.WebApplication.csproj", "{4532F3F7-EA36-42A2-857E-94FD1EB4DC03}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Pos.WebApplication", "Pos.WebApplication\Pos.WebApplication.csproj", "{4532F3F7-EA36-42A2-857E-94FD1EB4DC03}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

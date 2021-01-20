@@ -15,6 +15,8 @@ using Microsoft.Extensions.Logging;
 using Microsoft.OpenApi.Models;
 using Pos.Gateway.Securities.Application;
 using Pos.Gateway.Securities.Models;
+using CustomerService;
+using Microsoft.AspNetCore.Http;
 
 namespace Pos.Gateway.Securities
 {
@@ -30,6 +32,15 @@ namespace Pos.Gateway.Securities
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+
+            services.AddGrpc();
+            services
+                .AddGrpcClient<CustomerServicce.CustomerServicceClient>(opts =>
+                {
+                    opts.Address = new Uri("https://localhost:5010");
+                });
+
+
             services.AddScoped<IAuthService, AuthService>();
             //services.AddTransient<IUserStore<AspnetUse>, UserStore>();
             //services.AddTransient<IRoleStore<AppRole>, RoleStore>();
@@ -55,7 +66,7 @@ namespace Pos.Gateway.Securities
             // services.AddTransient<IRoleStore<AspNetRoles>, ApplicationRoleStore>();
 
 
-            services.AddTransient<UserManager<AspNetUsers>>();
+            //services.AddTransient<UserManager<AspNetUsers>>();
 
             services.AddDbContext<POS_GatewaySecuritiesContext>(options =>
                 options.UseSqlServer(
@@ -111,6 +122,13 @@ namespace Pos.Gateway.Securities
 
             app.UseEndpoints(endpoints =>
             {
+                endpoints.MapGrpcService<Services.LoginService>();
+
+                endpoints.MapGet("/", async context =>
+                {
+                    await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+                });
+
                 endpoints.MapControllers();
             });
 

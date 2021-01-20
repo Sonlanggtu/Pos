@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <FileVersion>19.1.2021.0704</FileVersion>
+    <FileVersion>20.1.2021.1047</FileVersion>
   </PropertyGroup>
 	<ItemGroup>
 		<Protobuf Include="Protos\customer.proto" GrpcServices="Server" />

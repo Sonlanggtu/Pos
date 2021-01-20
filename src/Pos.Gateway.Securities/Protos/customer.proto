@@ -1,0 +1,33 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "CustomerService";
+
+package Customer;
+
+service CustomerServicce	 {
+	rpc GetCustomer (GetCustomerRequest) returns (GetCustomerReply) {}
+	//rpc GetPaymentStatus (GetPaymentStatusRequest) returns (stream GetPaymentStatusResponse) {}
+}
+
+message GetCustomerRequest {
+	string Id = 1;
+}
+
+message GetCustomerReply {
+string Id = 1;
+string CreatedDate = 2;
+string ModifiedDate = 3;
+string CreatedBy = 4;
+string ModifiedBy = 5;
+string Name	= 6;
+string Phone = 7;
+string Address = 8;
+}
+
+//message GetPaymentStatusRequest {
+//	string TransactionId = 1;
+//}
+
+//message GetPaymentStatusResponse {
+//	string status = 1;
+//}

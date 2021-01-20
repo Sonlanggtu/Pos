@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using CustomerService;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -18,13 +19,13 @@ namespace Pos.Gateway.Securities.Controllers
     public class AuthController : ControllerBase
     {
 
-        //private readonly SignInManager<AspNetUsers> _signInManager;
-        //private readonly UserManager<AspNetUsers> _userManager;
         private POS_GatewaySecuritiesContext dbcontext = new POS_GatewaySecuritiesContext();
+        private readonly CustomerServicce.CustomerServicceClient _customer;
         private readonly IAuthService _authService;
-        public AuthController(IAuthService authService)
+        public AuthController(IAuthService authService, CustomerServicce.CustomerServicceClient customer)
         {
             _authService = authService;
+            _customer = customer;
         }
 
         [AllowAnonymous]
@@ -34,21 +35,22 @@ namespace Pos.Gateway.Securities.Controllers
             if (string.IsNullOrEmpty(auth.Username) || string.IsNullOrEmpty(auth.Password))
                 return BadRequest(new { message = "Tài khoản và mật khẩu là bắt buộc" });
 
-            var user = await dbcontext.AspNetUsers.Where(x=> x.UserName == auth.Username
-                                                            && PosEncryption.ValidatePassword(x.PasswordHash, auth.Password)
-                                                            && x.LockoutEnabled == false)
-                                                            .FirstOrDefaultAsync();
+            var listUser =  dbcontext.AspNetUsers.AsNoTracking()
+                                             .AsEnumerable().Where(x => x.UserName == auth.Username
+                                              && PosEncryption.ValidatePassword(auth.Password, x.PasswordHash)
+                                              && x.LockoutEnabled == false);
+            var user = listUser.FirstOrDefault();
+
+            // Test GRPC
+            string idUser = "858B5A7B-24A8-4C6C-BB7E-31F6A9E701CC";
+            var customer = new GetCustomerRequest { Id = idUser };
+            var result = _customer.GetCustomer(customer);
+            // end GRPC
+
             if (user != null)
-            {
-                //var result = await _signInManager.PasswordSignInAsync(auth.Username, auth.Password, false, true);
-                //if (!user.Succeeded)
-                //    return BadRequest("Mật khẩu không đúng");
                 return Ok(await _authService.GenerateTokenJWT(user));
-            }
             else
-            {
                 return NotFound($"Không tìm thấy tài khoản {auth.Username}");
-            }
         }
 
 

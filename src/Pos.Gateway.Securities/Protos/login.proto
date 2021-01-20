@@ -1,0 +1,32 @@
+﻿syntax = "proto3";
+
+option csharp_namespace = "LoginService";
+
+package Login;
+
+service LoginServicce	 {
+	rpc LoginSystem (LoginRequest) returns (LoginReply) {}
+	//rpc GetPaymentStatus (GetPaymentStatusRequest) returns (stream GetPaymentStatusResponse) {}
+}
+
+message LoginRequest {
+	string UserName = 1;
+	string Password = 2;
+}
+
+message LoginReply {
+string Id = 1;
+string UserName = 2;
+string FullName = 3;
+string PhoneNumber = 4;
+string Email = 5;
+bool LockoutEnabled = 6;
+}
+
+//message GetPaymentStatusRequest {
+//	string TransactionId = 1;
+//}
+
+//message GetPaymentStatusResponse {
+//	string status = 1;
+//}

@@ -1,7 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
-using Pos.Customer.Domain.CustomerAggregate;
+﻿using System;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.Metadata;
 using static Pos.Customer.Common.CommonCustomers;
-namespace Pos.Customer.Infrastructure
+namespace Pos.Customer.Infrastructure.Models
 {
     public partial class POSCustomerContext : DbContext
     {
@@ -15,7 +16,7 @@ namespace Pos.Customer.Infrastructure
             this.Database.EnsureCreated();
         }
 
-        public virtual DbSet<MstCustomer> Customer { get; set; }
+        public virtual DbSet<Customer> Customer { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -28,24 +29,12 @@ namespace Pos.Customer.Infrastructure
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.HasAnnotation("ProductVersion", "2.2.0-rtm-35687");
+            modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
-            modelBuilder.Entity<MstCustomer>(entity =>
+            modelBuilder.Entity<Customer>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
-
-                entity.Property(e => e.Address).HasMaxLength(255);
-
-                entity.Property(e => e.Name)
-                    .IsRequired()
-                    .HasMaxLength(50);
-
-                entity.Property(e => e.Phone).HasMaxLength(50);
             });
-
-            OnModelCreatingPartial(modelBuilder);
         }
-
-        partial void OnModelCreatingPartial(ModelBuilder modelBuilder);
     }
 }

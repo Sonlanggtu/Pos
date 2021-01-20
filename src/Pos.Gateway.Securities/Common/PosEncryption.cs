@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace Pos.Gateway.Securities.Common
 {
-    public class PosEncryption
+    public static class PosEncryption
     {
         public static string HashPassword(string password)
         {

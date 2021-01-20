@@ -4,7 +4,7 @@
 		<TargetFramework>netcoreapp3.1</TargetFramework>
 		<UserSecretsId>aspnet-Pos.WebApplication-F93AE89C-06E3-4502-BE1F-EF7F1036BF88</UserSecretsId>
 		<CopyRefAssembliesToPublishDirectory>false</CopyRefAssembliesToPublishDirectory>
-		<FileVersion>19.1.2021.0704</FileVersion>
+		<FileVersion>20.1.2021.0923</FileVersion>
 	</PropertyGroup>
 
 	<ItemGroup>

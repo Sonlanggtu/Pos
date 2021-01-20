@@ -72,7 +72,6 @@ namespace Pos.Gateway.Securities.Application
             }
             catch (Exception ex)
             {
-
                 return new { status = GatewaySecureCommon.ErrorSystem, reuslt = "" };
             }
 
