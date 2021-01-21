@@ -23,19 +23,20 @@ namespace Pos.Customer.WebApi.Services
 
         public async override Task<GetCustomerReply> GetCustomer(GetCustomerRequest request, ServerCallContext context)
         {
-            _logger.LogInformation($"customer input value >>>> {request.Id}");
-            var idCustomer = Guid.Parse(request.Id);
-            var customer = await dbContext.Customer.FindAsync(idCustomer);
+           _logger.LogInformation($"customer input value >>>> {request.Id}");
+            var customerId = Guid.Parse(request.Id);
+            var customer = await dbContext.Customer.FindAsync(customerId);
+
             return (new GetCustomerReply
             {
-                Name = customer.Name,
-                Address = customer.Address,
-                Phone = customer.Phone,
-                Id = customer.Id.ToString(),
-                CreatedBy = customer.CreatedBy,
-                CreatedDate = customer.CreatedDate.ToString(),
-                ModifiedBy = customer.ModifiedBy,
-                ModifiedDate = customer.ModifiedDate.ToString()
+                Name = customer.Name ?? "",
+                Address = customer.Address ?? "",
+                Phone = customer.Phone ?? "",
+                Id = customer.Id.ToString() ?? "",
+                CreatedBy = customer.CreatedBy ?? "",
+                CreatedDate = customer.CreatedDate.ToString() ?? "",
+                ModifiedBy = customer.ModifiedBy ?? "",
+                ModifiedDate = customer.ModifiedDate?.ToString() ?? ""
             });
         }
     }

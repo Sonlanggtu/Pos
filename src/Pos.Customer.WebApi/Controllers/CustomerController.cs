@@ -54,7 +54,7 @@ namespace Pos.Customer.WebApi.Controllers
                     UserName = username,
                     Password = password
                 };
-                var result = _login.LoginSystem(loginRequest);
+                var result = await _login.LoginSystemAsync(loginRequest);
 
                 var data = await _customerQueries.GetCustomers();
                 //var client = new CustomerService.CustomerService("");

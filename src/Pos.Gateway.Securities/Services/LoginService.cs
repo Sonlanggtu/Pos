@@ -36,16 +36,15 @@ namespace Pos.Gateway.Securities.Services
                                .Where(x => PosEncryption.ValidatePassword(request.Password, x.PasswordHash))
                                .ToList();
             var user = listUser.FirstOrDefault();
-
             if (user != null) status = GatewaySecureCommon.Success;
             return (new LoginReply
             {
-                Id = user.Id,
-                UserName = user.UserName,
-                FullName = user.ToString(),
-                PhoneNumber = user.PhoneNumber,
-                Email = user.Email,
-                LockoutEnabled = user.LockoutEnabled,
+                Id = user?.Id ?? "",
+                UserName = user?.UserName ?? "",
+                FullName = user?.ToString() ?? "",
+                PhoneNumber = user?.PhoneNumber ?? "",
+                Email = user?.Email ?? "",
+                LockoutEnabled = user?.LockoutEnabled ?? true,
                 Status = status
             });
         }
