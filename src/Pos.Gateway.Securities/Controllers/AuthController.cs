@@ -35,10 +35,14 @@ namespace Pos.Gateway.Securities.Controllers
             if (string.IsNullOrEmpty(auth.Username) || string.IsNullOrEmpty(auth.Password))
                 return BadRequest(new { message = "Tài khoản và mật khẩu là bắt buộc" });
 
-            var listUser =  dbcontext.AspNetUsers.AsNoTracking()
-                                             .AsEnumerable().Where(x => x.UserName == auth.Username
-                                              && PosEncryption.ValidatePassword(auth.Password, x.PasswordHash)
-                                              && x.LockoutEnabled == false);
+            var listUser =  await dbcontext.AspNetUsers.AsNoTracking()
+                                            .Where(x => x.UserName == auth.Username
+                                                    && x.LockoutEnabled == false)
+                                            .ToListAsync();
+
+            listUser = listUser.AsEnumerable()
+                               .Where(x=> PosEncryption.ValidatePassword(auth.Password, x.PasswordHash))
+                               .ToList();
             var user = listUser.FirstOrDefault();
 
             // Test GRPC

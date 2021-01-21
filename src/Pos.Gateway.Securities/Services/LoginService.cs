@@ -6,11 +6,15 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using CustomerService;
+using Pos.Gateway.Securities.Models;
+using Microsoft.EntityFrameworkCore;
+using Pos.Gateway.Securities.Common;
 
 namespace Pos.Gateway.Securities.Services
 {
     public class LoginService : LoginServicce.LoginServicceBase
     {
+        private POS_GatewaySecuritiesContext dbContext = new POS_GatewaySecuritiesContext();
         private readonly ILogger<LoginService> _logger;
         private readonly CustomerServicce.CustomerServicceClient _customer;
 
@@ -22,21 +26,27 @@ namespace Pos.Gateway.Securities.Services
 
         public override async Task<LoginReply> LoginSystem(LoginRequest request, ServerCallContext context)
         {
+            string status = "";
+            var listUser = await dbContext.AspNetUsers.AsNoTracking()
+                                        .Where(x => x.UserName == request.UserName
+                                                && x.LockoutEnabled == false)
+                                        .ToListAsync();
 
-            string idUser = "858B5A7B-24A8-4C6C-BB7E-31F6A9E701CC";
-            var customer = new GetCustomerRequest {
-                Id = idUser
-            };
-            var result = await _customer.GetCustomerAsync(customer);
+            listUser = listUser.AsEnumerable()
+                               .Where(x => PosEncryption.ValidatePassword(request.Password, x.PasswordHash))
+                               .ToList();
+            var user = listUser.FirstOrDefault();
 
+            if (user != null) status = GatewaySecureCommon.Success;
             return (new LoginReply
             {
-              Id = Guid.NewGuid().ToString(),
-              UserName = "NguyenA",
-              FullName = "NguyenVanA",
-              PhoneNumber = "912312321",
-              Email = "NguyenVanA@gmail.com",
-              LockoutEnabled = false
+                Id = user.Id,
+                UserName = user.UserName,
+                FullName = user.ToString(),
+                PhoneNumber = user.PhoneNumber,
+                Email = user.Email,
+                LockoutEnabled = user.LockoutEnabled,
+                Status = status
             });
         }
     }

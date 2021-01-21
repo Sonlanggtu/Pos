@@ -1,5 +1,6 @@
 ﻿using Dermayon.Infrastructure.Data.EFRepositories;
 using Pos.Customer.Domain.CustomerAggregate;
+using Pos.Customer.Infrastructure.Models;
 using System;
 using System.Collections.Generic;
 using System.Text;

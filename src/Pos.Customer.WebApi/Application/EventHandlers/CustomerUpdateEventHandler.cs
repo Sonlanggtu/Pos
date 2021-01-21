@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using Pos.Customer.Domain.CustomerAggregate;
 using Pos.Customer.Domain.Events;
 using Pos.Customer.Infrastructure;
+using Pos.Customer.Infrastructure.Models;
 using Pos.Customer.WebApi.Application.Commands;
 using Pos.Customer.WebApi.Application.Queries;
 using System;
@@ -27,7 +28,7 @@ namespace Pos.Customer.WebApi.Application.EventHandlers
 
         public CustomerUpdateEventHandler(IUnitOfWork<POSCustomerContext> uow,
             IMapper mapper,
-            IKakfaProducer producer, 
+            IKakfaProducer producer,
             ICustomerRepository customerRepository,
             ICustomerQueries customerQueries)
         {
@@ -60,7 +61,7 @@ namespace Pos.Customer.WebApi.Application.EventHandlers
             {
                 log.Error("Error Updating data customer", ex);
                 throw ex;
-            }            
+            }
         }
     }
 }

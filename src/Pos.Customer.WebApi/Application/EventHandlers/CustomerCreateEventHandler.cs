@@ -7,6 +7,7 @@ using Newtonsoft.Json.Linq;
 using Pos.Customer.Domain.CustomerAggregate;
 using Pos.Customer.Domain.Events;
 using Pos.Customer.Infrastructure;
+using Pos.Customer.Infrastructure.Models;
 using Pos.Customer.WebApi.Application.Commands;
 using System;
 using System.Collections.Generic;
@@ -25,7 +26,7 @@ namespace Pos.Customer.WebApi.Application.EventHandlers
 
         public CustomerCreateEventHandler(IUnitOfWork<POSCustomerContext> uow,
             IMapper mapper,
-            IKakfaProducer producer, 
+            IKakfaProducer producer,
             ICustomerRepository customerRepository)
         {
             _uow = uow;
@@ -52,7 +53,7 @@ namespace Pos.Customer.WebApi.Application.EventHandlers
             {
                 log.Error("Error Inserting data customer", ex);
                 throw ex;
-            }            
+            }
         }
     }
 }

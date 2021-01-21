@@ -22,7 +22,7 @@ namespace Pos.Customer.Infrastructure.Models
         {
             if (!optionsBuilder.IsConfigured)
             {
-                var POSConnection = GetVarEverionmentByKey("CUSTOMER_READ_CONNECTION");
+                var POSConnection = GetEnvConnection("CUSTOMER_READ_CONNECTION");
                 optionsBuilder.UseSqlServer(POSConnection);
             }
         }

@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
 using Pos.Customer.WebApi.Application.Commands;
 using Pos.Customer.WebApi.Application.Queries;
-
+using LoginService;
 namespace Pos.Customer.WebApi.Controllers
 {
     [Produces("application/json")]
@@ -24,13 +24,15 @@ namespace Pos.Customer.WebApi.Controllers
         private readonly ICommandHandler<DeleteCustomerCommand> _deleteCustomerCommand;
         private readonly ICustomerQueries _customerQueries;
         private readonly ILogger<CustomerController> _logger;
+        private readonly LoginServicce.LoginServicceClient _login;
 
         public CustomerController(IMapper mapper,
             ICommandHandler<CreateCustomerCommand> createCustomerCommand,
             ICommandHandler<UpdateCustomerCommand> updateCustomerCommand,
             ICommandHandler<DeleteCustomerCommand> deleteCustomerCommand,
             ICustomerQueries customerQueries,
-            ILogger<CustomerController> logger)
+            LoginServicce.LoginServicceClient login,
+        ILogger<CustomerController> logger)
         {
             _mapper = mapper;
             _createCustomerCommand = createCustomerCommand;
@@ -38,14 +40,22 @@ namespace Pos.Customer.WebApi.Controllers
             _deleteCustomerCommand = deleteCustomerCommand;
             _customerQueries = customerQueries;
             _logger = logger;
+            _login = login;
         }
 
         // GET api/customer
         [HttpGet("GetAllCustomerAsync")]
-        public async Task<IActionResult> Get()
+        public async Task<IActionResult> Get(string username, string password)
         {
             try
             {
+                var loginRequest = new LoginRequest
+                {
+                    UserName = username,
+                    Password = password
+                };
+                var result = _login.LoginSystem(loginRequest);
+
                 var data = await _customerQueries.GetCustomers();
                 //var client = new CustomerService.CustomerService("");
                 //var customer = CustomerService.GetCustom

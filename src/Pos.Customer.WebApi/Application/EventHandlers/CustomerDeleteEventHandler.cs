@@ -8,6 +8,7 @@ using Newtonsoft.Json.Linq;
 using Pos.Customer.Domain.CustomerAggregate;
 using Pos.Customer.Domain.Events;
 using Pos.Customer.Infrastructure;
+using Pos.Customer.Infrastructure.Models;
 using Pos.Customer.WebApi.Application.Commands;
 using Pos.Customer.WebApi.Application.Queries;
 using System;

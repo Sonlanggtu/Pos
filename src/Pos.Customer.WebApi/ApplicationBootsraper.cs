@@ -9,6 +9,7 @@ using Pos.Customer.Domain.CustomerAggregate;
 using Pos.Customer.Domain.Events;
 using Pos.Customer.Infrastructure;
 using Pos.Customer.Infrastructure.EventSources;
+using Pos.Customer.Infrastructure.Models;
 using Pos.Customer.Infrastructure.Repositories;
 using Pos.Customer.WebApi.Application.Commands;
 using Pos.Customer.WebApi.Application.EventHandlers;

@@ -4,7 +4,9 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
-
+using LoginService;
+using System;
+using static Pos.Customer.Common.CommonCustomers;
 namespace Pos.Customer.WebApi
 {
     public class Startup
@@ -19,8 +21,15 @@ namespace Pos.Customer.WebApi
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // GRPC
+            var urlGatewaySecure = GetEnvByKey("Pos.Gateway.Securities.Url");
             services.AddGrpc();
+            services.AddGrpcClient<LoginServicce.LoginServicceClient>(opts =>
+                           {
+                               opts.Address = new Uri(urlGatewaySecure);
+                           });
 
+            // end GRPC
             services.InitBootsraper(Configuration)
                 .InitAppServices()
                 .InitEventHandlers()
@@ -29,7 +38,7 @@ namespace Pos.Customer.WebApi
             services.AddControllers();
 
 
-    }
+        }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
