@@ -45,20 +45,19 @@ namespace Pos.Customer.WebApi.Controllers
 
         // GET api/customer
         [HttpGet("GetAllCustomerAsync")]
-        public async Task<IActionResult> Get(string username, string password)
+        public async Task<IActionResult> Get(/*string username, string password*/)
         {
             try
             {
-                var loginRequest = new LoginRequest
-                {
-                    UserName = username,
-                    Password = password
-                };
-                var result = await _login.LoginSystemAsync(loginRequest);
+                // Test GRPC
+                //var loginRequest = new LoginRequest
+                //{
+                //    UserName = username,
+                //    Password = password
+                //};
+                //var result = await _login.LoginSystemAsync(loginRequest);
 
                 var data = await _customerQueries.GetCustomers();
-                //var client = new CustomerService.CustomerService("");
-                //var customer = CustomerService.GetCustom
                 return Ok(new ApiOkResponse(data, data.Count()));
             }
             catch (Exception ex)

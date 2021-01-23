@@ -1,13 +1,13 @@
 {
   "ReRoutes": [
     {
+      //"Project": "pos.report.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "pos.report.webapi",
           "Host": "localhost",
-          "Port": 61952
+          "Port": 5008
         }
       ],
       "UpstreamPathTemplate": "/api-report/{controller}/{everything}",
@@ -25,14 +25,13 @@
       }
     },
     {
+      //"Project": "pos.product.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "pos.product.webapi",
-          //"Port": 80,
           "Host": "localhost",
-          "Port": 61913
+          "Port": 5007
         }
       ],
       "UpstreamPathTemplate": "/api-product/{controller}/{everything}",
@@ -44,14 +43,13 @@
       //}
     },
     {
+      //"Project": "pos.order.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "pos.order.webapi",
-          //"Port": 80
           "Host": "localhost",
-          "Port": 61830
+          "Port": 5006
         }
       ],
       "UpstreamPathTemplate": "/api-order/{controller}/{everything}",
@@ -63,14 +61,13 @@
       //}
     },
     {
+      //"Project": "pos.customer.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "pos.customer.webapi",
-          //"Port": 80
           "Host": "localhost",
-          "Port": 61924
+          "Port": 5005
         }
       ],
       "UpstreamPathTemplate": "/api-customer/{controller}/{everything}",
@@ -82,14 +79,13 @@
       //}
     },
     {
+      //"Project": "pos.gateway.securities",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "http",
+      "DownstreamScheme": "https",
       "DownstreamHostAndPorts": [
         {
-          //"Host": "pos.gateway.securities",
-          //"Port": 80
           "Host": "localhost",
-          "Port": 80
+          "Port": 5003
         }
       ],
       "UpstreamPathTemplate": "/api-authentication/{controller}/{everything}",
@@ -99,6 +95,6 @@
   "GlobalConfiguration": {
     //"RequestIdKey": "OcRequestId",
     //"AdministrationPath": "/administration"
-    "BaseUrl": "https://localhost:44335/"
+    "BaseUrl": "https://localhost:5002"
   }
 }

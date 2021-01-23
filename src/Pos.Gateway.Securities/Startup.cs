@@ -17,7 +17,7 @@ using Pos.Gateway.Securities.Application;
 using Pos.Gateway.Securities.Models;
 using CustomerService;
 using Microsoft.AspNetCore.Http;
-
+using static Pos.Gateway.Securities.Common.GatewaySecureCommon;
 namespace Pos.Gateway.Securities
 {
     public class Startup
@@ -32,12 +32,13 @@ namespace Pos.Gateway.Securities
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
-
+            // GRPC
+            var urlPosCustomer = GetEnvByKey("Pos.Customer.WebApi.Url");
             services.AddGrpc();
             services
                 .AddGrpcClient<CustomerServicce.CustomerServicceClient>(opts =>
                 {
-                    opts.Address = new Uri("https://localhost:5010");
+                    opts.Address = new Uri(urlPosCustomer);
                 });
 
 
@@ -126,7 +127,7 @@ namespace Pos.Gateway.Securities
 
                 endpoints.MapGet("/", async context =>
                 {
-                    await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+                    await context.Response.WriteAsync("Hello, This is Pos.Gateway.Securities");
                 });
 
                 endpoints.MapControllers();

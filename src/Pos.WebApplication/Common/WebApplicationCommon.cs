@@ -5,11 +5,10 @@ using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace Pos.Gateway.Securities.Common
+namespace Pos.WebApplication.Common
 {
-    public static class GatewaySecureCommon
+    public static class WebApplicationCommon
     {
-
         public const string Success = "ok";
         public const string Warning = "warning";
         public const string NotFound = "not-found";
@@ -23,8 +22,6 @@ namespace Pos.Gateway.Securities.Common
             public const string FullName = "fullName";
         }
 
-
-        #region Funtion Common
         public static string GetEnvByKey(string key)
         {
             var everionmentDocker = Environment.GetEnvironmentVariable(key);
@@ -70,7 +67,5 @@ namespace Pos.Gateway.Securities.Common
                 return result;
             }
         }
-        #endregion
-
     }
 }

@@ -1,4 +1,13 @@
 ﻿{
+  "Pos.Report.WebApi": {
+    "commandName": "Project",
+    "launchBrowser": true,
+    "launchUrl": "swagger",
+    "environmentVariables": {
+      "ASPNETCORE_ENVIRONMENT": "Development"
+    },
+    "applicationUrl": "https://localhost:5008"
+  },
   "iisSettings": {
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
@@ -9,14 +18,14 @@
   },
   "$schema": "http://json.schemastore.org/launchsettings.json",
   "profiles": {
-    "IIS Express": {
-      "commandName": "IISExpress",
-      "launchBrowser": true,
-      "launchUrl": "swagger",
-      "environmentVariables": {
-        "ASPNETCORE_ENVIRONMENT": "Development"
-      }
-    },
+    //"IIS Express": {
+    //  "commandName": "IISExpress",
+    //  "launchBrowser": true,
+    //  "launchUrl": "swagger",
+    //  "environmentVariables": {
+    //    "ASPNETCORE_ENVIRONMENT": "Development"
+    //  }
+    //},
     "Pos.Report.WebApi": {
       "commandName": "Project",
       "launchBrowser": true,
@@ -24,7 +33,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:5008"
+      "applicationUrl": "https://localhost:5008"
     }
     //,
     //"Docker": {

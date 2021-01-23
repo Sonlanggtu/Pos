@@ -26,27 +26,46 @@ namespace Pos.Gateway.Securities.Services
 
         public override async Task<LoginReply> LoginSystem(LoginRequest request, ServerCallContext context)
         {
-            string status = "";
-            var listUser = await dbContext.AspNetUsers.AsNoTracking()
-                                        .Where(x => x.UserName == request.UserName
-                                                && x.LockoutEnabled == false)
-                                        .ToListAsync();
-
-            listUser = listUser.AsEnumerable()
-                               .Where(x => PosEncryption.ValidatePassword(request.Password, x.PasswordHash))
-                               .ToList();
-            var user = listUser.FirstOrDefault();
-            if (user != null) status = GatewaySecureCommon.Success;
-            return (new LoginReply
+            string status = GatewaySecureCommon.NotFound;
+            try
             {
-                Id = user?.Id ?? "",
-                UserName = user?.UserName ?? "",
-                FullName = user?.ToString() ?? "",
-                PhoneNumber = user?.PhoneNumber ?? "",
-                Email = user?.Email ?? "",
-                LockoutEnabled = user?.LockoutEnabled ?? true,
-                Status = status
-            });
+                var listUser = await dbContext.AspNetUsers.AsNoTracking()
+                                       .Where(x => x.UserName == request.UserName
+                                               && x.LockoutEnabled == false)
+                                       .ToListAsync();
+
+                listUser = listUser.AsEnumerable()
+                                   .Where(x => PosEncryption.ValidatePassword(request.Password, x.PasswordHash))
+                                   .ToList();
+                var user = listUser.FirstOrDefault();
+                if (user != null) status = GatewaySecureCommon.Success;
+                return (new LoginReply
+                {
+                    Id = user?.Id ?? "",
+                    UserName = user?.UserName ?? "",
+                    FullName = user?.ToString() ?? "",
+                    PhoneNumber = user?.PhoneNumber ?? "",
+                    Email = user?.Email ?? "",
+                    LockoutEnabled = user?.LockoutEnabled ?? true,
+                    Status = status
+                });
+            }
+            catch (Exception)
+            {
+                status = GatewaySecureCommon.ErrorSystem;
+                return (new LoginReply
+                {
+                    Id = "",
+                    UserName = "",
+                    FullName = "",
+                    PhoneNumber = "",
+                    Email = "",
+                    LockoutEnabled = true,
+                    Status = status
+                });
+            }
+
+
         }
     }
 }

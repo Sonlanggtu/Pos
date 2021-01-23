@@ -10,7 +10,10 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Pos.WebApplication.Data;
 using HealthChecks.UI.Client;
-
+using static Pos.WebApplication.Common.WebApplicationCommon;
+using LoginService;
+using CustomerService;
+using System;
 
 namespace Pos.WebApplication
 {
@@ -26,6 +29,20 @@ namespace Pos.WebApplication
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            // GRPC
+            var urlGatewaySecure = GetEnvByKey("Pos.Gateway.Securities.Url");
+            var urlCustomerWebApi = GetEnvByKey("Pos.Customer.WebApi.Url");
+            services.AddGrpc();
+            services.AddGrpcClient<LoginServicce.LoginServicceClient>(opts =>
+            {
+                opts.Address = new Uri(urlGatewaySecure);
+            });
+            services.AddGrpcClient<CustomerServicce.CustomerServicceClient>(opts =>
+            {
+                opts.Address = new Uri(urlCustomerWebApi);
+            });
+            // end GRPC
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -54,6 +71,7 @@ namespace Pos.WebApplication
             //services.AddDefaultIdentity<IdentityUser>(options => options.SignIn.RequireConfirmedAccount = true)
             //    .AddEntityFrameworkStores<ApplicationDbContext>();
 
+            services.AddRazorPages().AddRazorRuntimeCompilation();
             services.AddControllersWithViews();
             services.AddRazorPages();
         }
@@ -85,6 +103,13 @@ namespace Pos.WebApplication
 
             app.UseEndpoints(endpoints =>
             {
+                //endpoints.MapGrpcService<Services.CustomerService>();
+
+                //endpoints.MapGet("/", async context =>
+                //{
+                //    await context.Response.WriteAsync("Communication with gRPC endpoints must be made through a gRPC client. To learn how to create a client, visit: https://go.microsoft.com/fwlink/?linkid=2086909");
+                //});
+
                 //endpoints.MapControllerRoute(
                 //    name: "default",
                 //    pattern: "{controller=Home}/{action=Index}/{id?}");

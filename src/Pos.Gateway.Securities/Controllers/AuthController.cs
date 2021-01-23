@@ -46,9 +46,9 @@ namespace Pos.Gateway.Securities.Controllers
             var user = listUser.FirstOrDefault();
 
             // Test GRPC
-            string idUser = "858B5A7B-24A8-4C6C-BB7E-31F6A9E701CC";
-            var customer = new GetCustomerRequest { Id = idUser };
-            var result = await _customer.GetCustomerAsync(customer);
+            //string idUser = "858B5A7B-24A8-4C6C-BB7E-31F6A9E701CC";
+            //var customer = new GetCustomerRequest { Id = idUser };
+            //var result = await _customer.GetCustomerAsync(customer);
             // end GRPC
 
             if (user != null)
