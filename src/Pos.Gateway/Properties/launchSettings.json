@@ -1,4 +1,4 @@
-{
+﻿{
   "Pos.Gateway": {
     "commandName": "Project",
     "launchBrowser": true,
@@ -6,7 +6,7 @@
     "environmentVariables": {
       "ASPNETCORE_ENVIRONMENT": "Development"
     },
-    "applicationUrl": "https://localhost:5002"
+    "applicationUrl": "http://localhost:5002"
   },
   "iisSettings": {
     "windowsAuthentication": false,
@@ -25,7 +25,7 @@
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "https://localhost:5002"
+      "applicationUrl": "http://localhost:5002"
     }
     //,
     //"IIS Express": {

@@ -1,0 +1,117 @@
+2021-01-24 01:27:21.088 +07:00 [FATAL] [] Application start-up failed
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Pos.Gateway.Program.Main(String[] args) in E:\Đề tài cần làm\MPSemilar\Pos\src\Pos.Gateway\Program.cs:line 35
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2021-01-24 01:27:42.685 +07:00 [FATAL] [] Application start-up failed
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Pos.Gateway.Program.Main(String[] args) in E:\Đề tài cần làm\MPSemilar\Pos\src\Pos.Gateway\Program.cs:line 35
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+
+2021-01-24 01:28:35.977 +07:00 [FATAL] [] Application start-up failed
+System.AggregateException: Some services are not able to be constructed (Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.) (Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.)
+ ---> System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Swashbuckle.AspNetCore.Swagger.ISwaggerProvider Lifetime: Transient ImplementationType: Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.ServiceCollectionContainerBuilderExtensions.BuildServiceProvider(IServiceCollection services, ServiceProviderOptions options)
+   at Microsoft.Extensions.DependencyInjection.DefaultServiceProviderFactory.CreateServiceProvider(IServiceCollection containerBuilder)
+   at Microsoft.Extensions.Hosting.Internal.ServiceFactoryAdapter`1.CreateServiceProvider(Object containerBuilder)
+   at Microsoft.Extensions.Hosting.HostBuilder.CreateServiceProvider()
+   at Microsoft.Extensions.Hosting.HostBuilder.Build()
+   at Pos.Gateway.Program.Main(String[] args) in E:\Đề tài cần làm\MPSemilar\Pos\src\Pos.Gateway\Program.cs:line 35
+ ---> (Inner Exception #1) System.InvalidOperationException: Error while validating the service descriptor 'ServiceType: Microsoft.Extensions.ApiDescriptions.IDocumentProvider Lifetime: Singleton ImplementationType: Microsoft.Extensions.ApiDescriptions.DocumentProvider': Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+ ---> System.InvalidOperationException: Unable to resolve service for type 'Microsoft.AspNetCore.Mvc.ApiExplorer.IApiDescriptionGroupCollectionProvider' while attempting to activate 'Swashbuckle.AspNetCore.SwaggerGen.SwaggerGenerator'.
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.<>c__DisplayClass7_0.<GetCallSite>b__0(Type type)
+   at System.Collections.Concurrent.ConcurrentDictionary`2.GetOrAdd(TKey key, Func`2 valueFactory)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(Type serviceType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateArgumentCallSites(Type serviceType, Type implementationType, CallSiteChain callSiteChain, ParameterInfo[] parameters, Boolean throwIfCallSiteNotFound)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.CreateConstructorCallSite(ResultCache lifetime, Type serviceType, Type implementationType, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.TryCreateExact(ServiceDescriptor descriptor, Type serviceType, CallSiteChain callSiteChain, Int32 slot)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.CallSiteFactory.GetCallSite(ServiceDescriptor serviceDescriptor, CallSiteChain callSiteChain)
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   --- End of inner exception stack trace ---
+   at Microsoft.Extensions.DependencyInjection.ServiceLookup.ServiceProviderEngine.ValidateService(ServiceDescriptor descriptor)
+   at Microsoft.Extensions.DependencyInjection.ServiceProvider..ctor(IEnumerable`1 serviceDescriptors, ServiceProviderOptions options)<---
+

@@ -1,9 +1,9 @@
 {
-  "ReRoutes": [
+  "Routes": [
     {
       //"Project": "pos.report.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -27,7 +27,7 @@
     {
       //"Project": "pos.product.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -45,7 +45,7 @@
     {
       //"Project": "pos.order.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -63,7 +63,7 @@
     {
       //"Project": "pos.customer.webapi",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -81,7 +81,7 @@
     {
       //"Project": "pos.gateway.securities",
       "DownstreamPathTemplate": "/api/{controller}/{everything}",
-      "DownstreamScheme": "https",
+      "DownstreamScheme": "http",
       "DownstreamHostAndPorts": [
         {
           "Host": "localhost",
@@ -95,6 +95,6 @@
   "GlobalConfiguration": {
     //"RequestIdKey": "OcRequestId",
     //"AdministrationPath": "/administration"
-    "BaseUrl": "https://localhost:5002"
+    "BaseUrl": "http://localhost:5002"
   }
 }
