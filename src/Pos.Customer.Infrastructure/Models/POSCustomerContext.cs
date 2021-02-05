@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata;
 using static Pos.Customer.Common.CommonCustomers;
+using Pos.Customer.Domain.CustomerAggregate;
 namespace Pos.Customer.Infrastructure.Models
 {
     public partial class POSCustomerContext : DbContext
@@ -16,7 +17,7 @@ namespace Pos.Customer.Infrastructure.Models
             this.Database.EnsureCreated();
         }
 
-        public virtual DbSet<Customer> Customer { get; set; }
+        public virtual DbSet<Customer.Domain.CustomerAggregate.Customer> Customer { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -31,7 +32,7 @@ namespace Pos.Customer.Infrastructure.Models
         {
             modelBuilder.HasAnnotation("ProductVersion", "2.2.6-servicing-10079");
 
-            modelBuilder.Entity<Customer>(entity =>
+            modelBuilder.Entity<Customer.Domain.CustomerAggregate.Customer>(entity =>
             {
                 entity.Property(e => e.Id).ValueGeneratedNever();
             });

@@ -49,7 +49,7 @@ namespace Pos.Customer.WebApi.Application.EventHandlers
                 var data = await _customerQueries.GetCustomer(dataConsomed.CustomerId);
                 if (data != null)
                 {
-                    data = _mapper.Map<MstCustomer>(dataConsomed);
+                    data = _mapper.Map<Domain.CustomerAggregate.Customer>(dataConsomed);
 
                     log.Info("Update Customer");
                     //Consume data to Read Db

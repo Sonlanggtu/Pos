@@ -2,9 +2,10 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-	  <FileVersion>21.1.2021.0258</FileVersion>
+	  <FileVersion>5.2.2021.0738</FileVersion>
 	  <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
 	  <OutputType>Exe</OutputType>
+	  <AssemblyVersion>5.2.2021.0738</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

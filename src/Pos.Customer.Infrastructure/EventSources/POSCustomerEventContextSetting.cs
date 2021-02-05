@@ -7,5 +7,6 @@ namespace Pos.Customer.Infrastructure.EventSources
 {
     public class POSCustomerEventContextSetting : MongoDbSettings
     {
+
     }
 }

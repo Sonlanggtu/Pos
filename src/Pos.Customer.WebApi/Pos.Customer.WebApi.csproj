@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <FileVersion>21.1.2021.0258</FileVersion>
+    <FileVersion>5.2.2021.0907</FileVersion>
+    <AssemblyVersion>5.2.2021.0907</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,6 +20,7 @@
 
 		<PackageReference Include="AutoMapper" Version="9.0.0" />
 		<PackageReference Include="Swashbuckle.AspNetCore" Version="5.5.1" />
+		<ProjectReference Include="..\Pos.Customer.Common\Pos.Customer.Common.csproj" />
 		<ProjectReference Include="..\Pos.Customer.Domain\Pos.Customer.Domain.csproj" />
 		<ProjectReference Include="..\Pos.Customer.Infrastructure\Pos.Customer.Infrastructure.csproj" />
 	</ItemGroup>

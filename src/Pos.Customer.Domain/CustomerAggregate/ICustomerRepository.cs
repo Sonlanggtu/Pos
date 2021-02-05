@@ -5,7 +5,7 @@ using System.Text;
 
 namespace Pos.Customer.Domain.CustomerAggregate
 {
-    public interface ICustomerRepository : IEfRepository<MstCustomer>
+    public interface ICustomerRepository : IEfRepository<Customer>
     {
     }
 }

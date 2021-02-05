@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
-namespace Pos.Customer.Infrastructure.Models
+namespace Pos.Customer.WebApi.ViewModels
 {
-    public partial class Customer
+    public class CustomerVm
     {
         public Guid Id { get; set; }
         public DateTime CreatedDate { get; set; }

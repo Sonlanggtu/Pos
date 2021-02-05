@@ -7,7 +7,7 @@ using System.Text;
 
 namespace Pos.Customer.Infrastructure.Repositories
 {
-    public class CustomeRepository : EfRepository<MstCustomer>, ICustomerRepository
+    public class CustomeRepository : EfRepository<Domain.CustomerAggregate.Customer>, ICustomerRepository
     {
         private readonly POSCustomerContext _context;
         public CustomeRepository(POSCustomerContext context) : base(context)

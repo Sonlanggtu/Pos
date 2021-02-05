@@ -13,11 +13,11 @@ namespace Pos.Customer.WebApi.Mapping
     {
         public EventoDomainMapperProfile()
         {
-            CreateMap<CustomerCreatedEvent, MstCustomer>()
+            CreateMap<CustomerCreatedEvent, Customer.Domain.CustomerAggregate.Customer>()
                 .ForMember(dest => dest.Id, opt => opt.MapFrom(src => Guid.NewGuid()));
 
-            CreateMap<CustomerUpdatedEvent, MstCustomer>()
-                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CustomerId));                        
+            CreateMap<CustomerUpdatedEvent, Customer.Domain.CustomerAggregate.Customer>()
+                .ForMember(dest => dest.Id, opt => opt.MapFrom(src => src.CustomerId));
         }
     }
 }

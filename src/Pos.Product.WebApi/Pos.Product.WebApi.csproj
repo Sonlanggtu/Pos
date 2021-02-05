@@ -2,7 +2,8 @@
 
   <PropertyGroup>
     <TargetFramework>netcoreapp3.1</TargetFramework>
-    <FileVersion>20.1.2021.0923</FileVersion>
+    <FileVersion>5.2.2021.0838</FileVersion>
+    <AssemblyVersion>5.2.2021.0838</AssemblyVersion>
   </PropertyGroup>
 
 	<ItemGroup>
@@ -10,6 +11,7 @@
 	</ItemGroup>
 
 	<ItemGroup>
+		<ProjectReference Include="..\Pos.Product.Comon\Pos.Product.Common.csproj" />
 		<ProjectReference Include="..\Pos.Product.Domain\Pos.Product.Domain.csproj" />
 		<ProjectReference Include="..\Pos.Product.Infrastructure\Pos.Product.Infrastructure.csproj" />
 	</ItemGroup>

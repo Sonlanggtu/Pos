@@ -41,7 +41,7 @@ namespace Pos.Customer.WebApi.Application.EventHandlers
                 log.Info("Consume CustomerCreatedEvent");
 
                 var dataConsomed = jObject.ToObject<CustomerCreatedEvent>();
-                var data = _mapper.Map<MstCustomer>(dataConsomed);
+                var data = _mapper.Map<Customer.Domain.CustomerAggregate.Customer>(dataConsomed);
 
                 log.Info("Insert Customer");
 

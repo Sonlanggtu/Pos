@@ -66,6 +66,13 @@ namespace Pos.Customer.WebApi
             return services;
         }
 
+
+        public static IServiceCollection test1234(this IServiceCollection services)
+        {
+            Console.WriteLine("Hello");
+            return null;
+        }
+
         public static IServiceCollection InitAppServices(this IServiceCollection services)
         {
             #region Command
